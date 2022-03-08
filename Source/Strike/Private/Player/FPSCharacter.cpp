@@ -30,9 +30,6 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	// 先建立按键映射
-	BindCustomKeySettings();
-
 	// 绑定基本移动
 	PlayerInputComponent->BindAxis("Move Forward / Backward", this, &AFPSCharacter::MoveForwardOrBackward);
 	PlayerInputComponent->BindAxis("Move Right / Left", this, &AFPSCharacter::MoveRightOrLeft);
@@ -40,27 +37,6 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	// 绑定视角移动
 	PlayerInputComponent->BindAxis("Turn Right / Left", this, &AFPSCharacter::TurnRightOrLeft);
 	PlayerInputComponent->BindAxis("Look Up / Down", this, &AFPSCharacter::LookUpOrDown);
-}
-
-void AFPSCharacter::BindCustomKeySettings()
-{
-	//Todo
-	// 如果不存在自定义键位映射，加载默认的设置
-
-	// 建立基本移动键位映射
-	// 前后移动
-	UInputSettings::GetInputSettings()->AddAxisMapping(FInputAxisKeyMapping("Move Forward / Backward", EKeys::W, 1.0f));
-	UInputSettings::GetInputSettings()->AddAxisMapping(FInputAxisKeyMapping("Move Forward / Backward", EKeys::S, -1.0f));
-
-	// 前后移动（手柄）
-	UInputSettings::GetInputSettings()->AddAxisMapping(FInputAxisKeyMapping("Move Forward / Backward", EKeys::Gamepad_LeftY, 1.0f));
-
-	// 左右移动
-	UInputSettings::GetInputSettings()->AddAxisMapping(FInputAxisKeyMapping("Move Right / Left", EKeys::D, 1.0f));
-	UInputSettings::GetInputSettings()->AddAxisMapping(FInputAxisKeyMapping("Move Right / Left", EKeys::A, -1.0f));
-
-	// 左右移动（手柄）
-	UInputSettings::GetInputSettings()->AddAxisMapping(FInputAxisKeyMapping("Move Right / Left", EKeys::Gamepad_LeftX, 1.0f));
 }
 
 void AFPSCharacter::MoveForwardOrBackward(const float Val)

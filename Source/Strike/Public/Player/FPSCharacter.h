@@ -6,6 +6,9 @@
 #include "GameFramework/Character.h"
 #include "FPSCharacter.generated.h"
 
+/**
+ * @brief 游戏中玩家的人物类，主要实现射击、瞄准，以及各种操作的结合
+ */
 UCLASS()
 class STRIKE_API AFPSCharacter : public ACharacter
 {
@@ -31,13 +34,6 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-	/**
-	 * @brief 加载玩家自定义的键位映射，若存在则自动加载
-	 *        若不存在则绑定为默认设置
-	 *        一般在@see AFPSCharacter::SetupPlayerInputComponent中调用
-	 */
-	void BindCustomKeySettings();
 
 	/**
 	 * @brief 处理前后移动请求，此函数用于处理玩家输入
