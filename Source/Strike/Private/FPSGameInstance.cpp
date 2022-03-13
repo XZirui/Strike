@@ -7,6 +7,4 @@ UFPSGameInstance::UFPSGameInstance()
 {
 	// 创建储存对象
 	CustomSettingSave = NewObject<UCustomSettingSave>();
-
-
 }

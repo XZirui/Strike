@@ -33,7 +33,7 @@ public:
 	float MouseSense = 1.0f;
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 
 	/**
 	 * @brief 处理前后移动请求，此函数用于处理玩家输入
@@ -54,4 +54,14 @@ public:
 	 * @brief 处理视角上下移动请求，此函数用于处理玩家输入
 	 */
 	void LookUpOrDown(const float Val);
+
+	/**
+	 * @brief 处理跳跃请求
+	 */
+	virtual void Jump() override;
+
+	/**
+	 * @brief 处理停止跳跃请求
+	 */
+	virtual void StopJumping() override;
 };

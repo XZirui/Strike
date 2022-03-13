@@ -16,4 +16,6 @@ class STRIKE_API AFPSGameMode : public AGameMode
 
 public:
 	AFPSGameMode();
+
+	virtual void BeginPlay() override;
 };

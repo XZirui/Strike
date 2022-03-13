@@ -13,5 +13,4 @@ UCLASS()
 class STRIKE_API AFPSGameState : public AGameState
 {
 	GENERATED_BODY()
-
 };

@@ -37,6 +37,10 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	// 绑定视角移动
 	PlayerInputComponent->BindAxis("Turn Right / Left", this, &AFPSCharacter::TurnRightOrLeft);
 	PlayerInputComponent->BindAxis("Look Up / Down", this, &AFPSCharacter::LookUpOrDown);
+
+	// 绑定跳跃操作
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AFPSCharacter::Jump);
+	PlayerInputComponent->BindAction("Jump", IE_Released, this, &AFPSCharacter::StopJumping);
 }
 
 void AFPSCharacter::MoveForwardOrBackward(const float Val)
@@ -58,3 +62,14 @@ void AFPSCharacter::LookUpOrDown(const float Val)
 {
 	AddControllerPitchInput(Val * MouseSense);
 }
+
+void AFPSCharacter::Jump()
+{
+	bPressedJump = true;
+}
+
+void AFPSCharacter::StopJumping()
+{
+	bPressedJump = false;
+}
+

@@ -10,6 +10,12 @@
 AFPSGameMode::AFPSGameMode()
 {
 	PlayerControllerClass = AFPSPlayerController::StaticClass();
-	DefaultPawnClass = AFPSCharacter::StaticClass();
-	GameState = TObjectPtr<AFPSGameState>();
+	DefaultPawnClass = ConstructorHelpers::FClassFinder<AFPSCharacter>(
+		TEXT("/Game/FirstPerson/Blueprints/FPSCharacter_BP")).Class;
+}
+
+void AFPSGameMode::BeginPlay()
+{
+	Super::BeginPlay();
+	GameState = GetWorld()->SpawnActor<AFPSGameState>();
 }
